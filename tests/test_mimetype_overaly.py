@@ -8,6 +8,14 @@ from . import tmp_dataset_fixture  # NOQA
 def test_mimetype_overlay(tmp_dataset_fixture):  # NOQA
     from dtoolutils.overlays import add_mimetype
 
+    # Work around issue with git not storing empty directories.
+    overlays_dir = os.path.join(
+        tmp_dataset_fixture._abs_path,
+        ".dtool",
+        "overlays")
+    if not os.path.isdir(overlays_dir):
+        os.mkdir(overlays_dir)
+
     assert "mimetype" not in tmp_dataset_fixture.overlays
 
     add_mimetype(tmp_dataset_fixture)
