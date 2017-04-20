@@ -30,6 +30,7 @@ import os
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.doctest',
+    'sphinx.ext.intersphinx',
     'sphinx.ext.viewcode']
 
 # Add any paths that contain templates here, relative to this directory.
@@ -164,3 +165,9 @@ texinfo_documents = [
      author, repo_name, u'Utilities for working with dtoolcore',
      'Miscellaneous'),
 ]
+
+# Example configuration for intersphinx: refer to the Python standard library.
+intersphinx_mapping = {
+    'dtoolcore':
+    ('http://dtoolcore.readthedocs.io/en/latest/', None)
+    }

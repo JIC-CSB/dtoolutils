@@ -35,7 +35,7 @@ def _mimetype(fpath):
 def add_mimetype(dataset):
     """Add a mimetype overlay to the dataset.
 
-    :param dataset: `dtoolcore.DataSet`
+    :param dataset: :class:`dtoolcore.DataSet`
     """
     mimetype_overlay = dataset.empty_overlay()
     for i in dataset.identifiers:
