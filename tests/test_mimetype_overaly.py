@@ -25,6 +25,7 @@ def test_mimetype_overlay(tmp_dataset_fixture):  # NOQA
     }
 
     mimetype_overlay = tmp_dataset_fixture.overlays["mimetype"]
+    assert len(mimetype_overlay) == 7
 
     for i in tmp_dataset_fixture.identifiers:
         fpath = tmp_dataset_fixture.item_path_from_hash(i)
