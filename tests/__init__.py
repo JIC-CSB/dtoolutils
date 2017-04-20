@@ -7,6 +7,7 @@ import tempfile
 import pytest
 
 _HERE = os.path.dirname(__file__)
+TEST_SAMPLE_DATASET = os.path.join(_HERE, "data", "sample_data")
 
 
 @pytest.fixture
@@ -29,6 +30,21 @@ def tmp_dir_fixture(request):
     def teardown():
         shutil.rmtree(d)
     return d
+
+
+@pytest.fixture
+def tmp_dataset_fixture(request):
+    from dtoolcore import DataSet
+    d = tempfile.mkdtemp()
+
+    dataset_path = os.path.join(d, 'sample_data')
+    shutil.copytree(TEST_SAMPLE_DATASET, dataset_path)
+
+    @request.addfinalizer
+    def teardown():
+        shutil.rmtree(d)
+
+    return DataSet.from_path(dataset_path)
 
 
 @pytest.fixture
