@@ -16,7 +16,7 @@ setup(
     url=url,
     install_requires=[
         "binaryornot",
-        "dtoolcore",
+        "dtoolcore>=0.14.0",
         "puremagic",
     ],
     download_url="{}/tarball/{}".format(url, version),

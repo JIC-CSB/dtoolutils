@@ -16,11 +16,11 @@ def test_add_mimetype_overlay(tmp_dataset_fixture):  # NOQA
     if not os.path.isdir(overlays_dir):
         os.mkdir(overlays_dir)
 
-    assert "mimetype" not in tmp_dataset_fixture.overlays
+    assert "mimetype" not in tmp_dataset_fixture.access_overlays()
 
     add_mimetype(tmp_dataset_fixture)
 
-    assert "mimetype" in tmp_dataset_fixture.overlays
+    assert "mimetype" in tmp_dataset_fixture.access_overlays()
 
     expected_mimetypes = {
         'actually_a_png.txt': 'image/png',
@@ -32,11 +32,11 @@ def test_add_mimetype_overlay(tmp_dataset_fixture):  # NOQA
         'tiny.png': 'image/png'
     }
 
-    mimetype_overlay = tmp_dataset_fixture.overlays["mimetype"]
+    mimetype_overlay = tmp_dataset_fixture.access_overlays()["mimetype"]
     assert len(mimetype_overlay) == 7
 
     for i in tmp_dataset_fixture.identifiers:
-        fpath = tmp_dataset_fixture.item_path_from_hash(i)
+        fpath = tmp_dataset_fixture.abspath_from_identifier(i)
         fname = os.path.basename(fpath)
         actual = mimetype_overlay[i]
         expected = expected_mimetypes[fname]
@@ -54,8 +54,8 @@ def test_add_mimetype_overlay_does_not_raise_when_called_more_than_once(tmp_data
     if not os.path.isdir(overlays_dir):
         os.mkdir(overlays_dir)
 
-    assert "mimetype" not in tmp_dataset_fixture.overlays
+    assert "mimetype" not in tmp_dataset_fixture.access_overlays()
 
     add_mimetype(tmp_dataset_fixture)
-    assert "mimetype" in tmp_dataset_fixture.overlays
+    assert "mimetype" in tmp_dataset_fixture.access_overlays()
     add_mimetype(tmp_dataset_fixture)

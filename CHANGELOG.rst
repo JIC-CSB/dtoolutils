@@ -14,6 +14,8 @@ Added
 Changed
 ^^^^^^^
 
+- Make the code work with ``dtoolcore>=0.14.0``
+
 
 Deprecated
 ^^^^^^^^^^

@@ -39,6 +39,6 @@ def add_mimetype(dataset):
     """
     mimetype_overlay = dataset.empty_overlay()
     for i in dataset.identifiers:
-        fpath = dataset.item_path_from_hash(i)
+        fpath = dataset.abspath_from_identifier(i)
         mimetype_overlay[i] = _mimetype(fpath)
     dataset.persist_overlay("mimetype", mimetype_overlay, overwrite=True)
