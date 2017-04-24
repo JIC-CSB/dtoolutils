@@ -26,6 +26,8 @@ Removed
 Fixed
 ^^^^^
 
+- ``overlays.add_mimetype`` no longer raises when called multiple times on same dataset
+
 
 Security
 ^^^^^^^^
